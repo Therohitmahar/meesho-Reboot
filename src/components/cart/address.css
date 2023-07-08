@@ -1,0 +1,27 @@
+.address-css input{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    width: 100%;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 2px solid;
+}
+.address-css input:focus{
+    font-weight: normal;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #F43397;
+}
+
+.address-css form{
+    display: flex;
+    align-items: start;
+    width: 70vw;
+    margin-left: 50px;
+    justify-content: start;
+}
+.address-css form button{
+    position: sticky;
+    bottom: 10px;
+}

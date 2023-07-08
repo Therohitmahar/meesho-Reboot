@@ -1,0 +1,77 @@
+ *{
+    box-sizing: border-box;
+ }
+
+ .card-container{    
+    height: 300px;
+    padding: 20px 10px; 
+    box-sizing: content-box;
+    aspect-ratio: 4.4/6;
+    border-radius: 3%;
+    border: 1px solid rgba(75, 74, 74, 0.3);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;      
+    margin: 10px;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+}
+.card-container:hover{
+    scale: 1.02;
+    box-shadow: 1px 0px 5px rgb(197, 183, 183);
+}
+.card-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+   
+}
+.card-price{
+    margin: 10px;
+}
+.cart-title{
+    font-weight: bold;
+    color: grey;
+}
+
+.card-image img{
+    width: 100%;
+    max-width: 300px;
+    min-width: 250px;
+    height: 100%;
+    object-fit: scale-down;
+}
+.card-details{
+    width: 100%;
+    overflow: hidden;
+} 
+.star{
+    background-color: rgb(13, 194, 109);
+    color: white;
+    font-weight: bold;
+    width: 50px;
+    aspect-ratio: 12/5;
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+}
+.onwards{
+    font-weight: 100;
+    font-size: 12px;
+    color: grey;
+}
+.review-count{
+    font-weight: bold;
+    font-size: 12px;
+    color: grey;
+    margin-left: 5px;
+}
+.free-delivery-card{
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,25 @@
+.line{
+    width: 15%;
+    height: 1px;
+    background: rgb(247, 168, 202);
+}
+.hero-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.top-cat-title{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.top-cat-title h3{
+    margin: 10px 20px;
+    font-size: 28px;
+}
+.hero-container img{
+    margin: 20px auto;
+    width: 73vw;
+}
