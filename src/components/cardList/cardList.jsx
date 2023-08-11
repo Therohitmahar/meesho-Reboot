@@ -19,7 +19,7 @@ const CardList = () => {
   function handlePrev() {
     setPage(1);
   }
-  console.log(product);
+
   return (
     <div>
       <div className="card-holder">

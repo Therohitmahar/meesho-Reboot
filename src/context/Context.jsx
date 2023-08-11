@@ -17,29 +17,31 @@ function cartReducer(state, action) {
     case "removeFromCart":
       return {
         ...state,
-        cart: state.cart.filter((c) => c.id !== action.payload.id)
+        cart: state.cart.filter((c) => c.id !== action.payload.id),
       };
     case "incQty":
       return {
         ...state,
         cart: state.cart.filter((c) =>
-          c.id === action.payload.id ? (c.qty = action.payload.qty + 1) : c.qty),
+          c.id === action.payload.id ? (c.qty = action.payload.qty + 1) : c.qty
+        ),
       };
     case "decQty":
       return {
         ...state,
-        cart: state.cart.filter((c) => c.id === action.payload.id ? (c.qty = action.payload.qty - 1) : c.qty)
+        cart: state.cart.filter((c) =>
+          c.id === action.payload.id ? (c.qty = action.payload.qty - 1) : c.qty
+        ),
       };
     case "clear":
       return {
         cart: [],
-      }
+      };
     default:
       return state;
   }
 }
 function Context({ children }) {
-
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState([]);
   const [page, setPage] = useState(1);
@@ -51,7 +53,6 @@ function Context({ children }) {
       );
       const data = await response.json();
       setInfo(data);
-      console.log(data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -67,14 +68,15 @@ function Context({ children }) {
     cart: [],
   });
   return (
-    <CartContext.Provider value={{ state, dispatch, info, isLoading, page, setPage }}>
+    <CartContext.Provider
+      value={{ state, dispatch, info, isLoading, page, setPage }}
+    >
       {children}
     </CartContext.Provider>
   );
 }
 
 export function InfoState() {
-
   return useContext(CartContext);
 }
 
