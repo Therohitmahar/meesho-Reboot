@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./totalPrice.css";
 import { InfoState } from "../../context/Context";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
 
 function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
@@ -28,7 +28,7 @@ function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
       lateTimer();
       timer();
     } else {
-      alert("PLease Login First");
+      alert("Please Login First");
       navigate("/profile");
       return;
     }
