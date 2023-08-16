@@ -14,11 +14,10 @@ function Checkout() {
   const {
     state: { cart },
     dispatch,
+    deliveryDate,
   } = InfoState();
   const [total, setTotal] = useState();
-  const [nav, setNav] = useState(true);
   const navigate = useNavigate();
-
   useEffect(() => {
     setTotal(cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0));
   }, [cart]);
@@ -37,7 +36,12 @@ function Checkout() {
       theme: "colored",
     });
   }
-  function timer() {
+  window.timer = function () {
+    localStorage.setItem(
+      "order",
+      JSON.stringify({ ...cart, deliveryDate: deliveryDate })
+    );
+
     setConfetti(true);
     setTimeout(() => {
       setConfetti(false);
@@ -45,10 +49,8 @@ function Checkout() {
       navigate("/");
       letsToast();
     }, 4000);
-  }
+  };
 
-  const deliveryDate = new Date();
-  const getDate = deliveryDate.getDate() + 5;
   return (
     <div style={{ display: "flex", margin: "auto", width: "90vw" }}>
       {cart.length > 0 && (
@@ -62,10 +64,10 @@ function Checkout() {
               margin: "5px",
               width: "90%",
               padding: "5px",
+              backgroundColor: "yellow",
             }}
           >
-            <FiTruck /> Estimated Delivery by {getDate > 29 ? 5 : getDate}/
-            {deliveryDate.getUTCMonth() + 1}/{deliveryDate.getFullYear()}
+            <FiTruck /> Estimated Delivery by {" " + deliveryDate}
           </div>
           {cart.map((item) => {
             return (

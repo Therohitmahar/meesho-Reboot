@@ -8,8 +8,6 @@ import "./nav.css";
 import { InfoState } from "../../context/Context";
 import SearchedItem from "./SearchedItem.jsx";
 
-//TODO: when the searchbar is empty
-
 export const Nav = () => {
   const [searchInput, setSearchInput] = useState();
   const {

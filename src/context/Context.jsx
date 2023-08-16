@@ -46,6 +46,21 @@ function Context({ children }) {
   const [info, setInfo] = useState([]);
   const [page, setPage] = useState(1);
 
+  function getEstimate() {
+    const deliveryDate = new Date();
+    let date = deliveryDate.getDate();
+    let month = deliveryDate.getMonth() + 1;
+    const year = deliveryDate.getFullYear();
+    if (date >= 24) {
+      date = 1;
+      month += 1;
+    } else {
+      date += 5;
+    }
+    return `${date}/${month}/${year}`;
+  }
+  let deliveryDate = getEstimate();
+  console.log(deliveryDate);
   const fetchInfo = async () => {
     try {
       const response = await fetch(
@@ -69,7 +84,7 @@ function Context({ children }) {
   });
   return (
     <CartContext.Provider
-      value={{ state, dispatch, info, isLoading, page, setPage }}
+      value={{ state, dispatch, info, isLoading, page, setPage, deliveryDate }}
     >
       {children}
     </CartContext.Provider>

@@ -5,14 +5,7 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
 
-function TotalPrice({
-  handleSuccess,
-  timer,
-  continueTo,
-  ContinueTitle,
-  dispatch,
-  justSaying,
-}) {
+function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
   const {
     state: { cart },
   } = InfoState();
@@ -27,10 +20,23 @@ function TotalPrice({
     }, 2000);
   }
 
+  let logged;
+  function checkAuth() {
+    const localData = JSON.parse(localStorage.getItem("auth"));
+    logged = localData.isLogged;
+    if (logged) {
+      lateTimer();
+      timer();
+    } else {
+      alert("PLease Login First");
+      navigate("/profile");
+      return;
+    }
+  }
+
   useEffect(() => {
     setTotal(cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0));
   }, [cart]);
-  console.log(justSaying);
   return (
     <>
       {continues ? (
@@ -61,9 +67,7 @@ function TotalPrice({
           )}
           <button
             onClick={() => {
-              lateTimer();
-              handleSuccess();
-              timer();
+              checkAuth();
             }}
           >
             {ContinueTitle}

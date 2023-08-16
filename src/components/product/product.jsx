@@ -12,9 +12,10 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   const [goToCart, setGoToCart] = useState(false);
   const navigate = useNavigate();
-  const { state: { cart },
-    dispatch, } = InfoState();
-  console.log("this is in the ", [cart]);
+  const {
+    state: { cart },
+    dispatch,
+  } = InfoState();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -46,32 +47,32 @@ const Product = () => {
             />
           </div>
           <div className="button-holder">
-
-            {!goToCart ? (<button
-              className="btn addToCart"
-              onClick={() => {
-                dispatch({
-                  type: "addToCart",
-                  payload: product
-                })
-                setGoToCart(true);
-              }
-              }
-            >
-              <ShoppingCartIcon />
-              Add to Cart
-            </button>) :
-              (<button
+            {!goToCart ? (
+              <button
                 className="btn addToCart"
                 onClick={() => {
-                  navigate("/")
-                  navigate('/cart')
-                }
-                }
+                  dispatch({
+                    type: "addToCart",
+                    payload: product,
+                  });
+                  setGoToCart(true);
+                }}
+              >
+                <ShoppingCartIcon />
+                Add to Cart
+              </button>
+            ) : (
+              <button
+                className="btn addToCart"
+                onClick={() => {
+                  navigate("/");
+                  navigate("/cart");
+                }}
               >
                 <ShoppingCartIcon />
                 Go to Cart
-              </button>)}
+              </button>
+            )}
 
             <button className="btn buybtn">
               <KeyboardDoubleArrowRightIcon />
