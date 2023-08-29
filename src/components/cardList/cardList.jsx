@@ -22,7 +22,7 @@ const CardList = () => {
 
   return (
     <div>
-      <div className="card-holder">
+      <div className="card-holder" id="products-page">
         {isLoading ? (
           <h1>Loading...</h1>
         ) : (

@@ -4,11 +4,13 @@ import { InfoState } from "../../context/Context";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
   const {
     state: { cart },
   } = InfoState();
+  const { isAuthenticated } = useAuth0();
   const [total, setTotal] = useState();
   const [continues, setContinues] = useState(false);
   const navigate = useNavigate();
@@ -20,11 +22,8 @@ function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
     }, 2000);
   }
 
-  let logged;
   function checkAuth() {
-    const localData = JSON.parse(localStorage.getItem("auth"));
-    logged = localData.isLogged;
-    if (logged) {
+    if (isAuthenticated) {
       lateTimer();
       timer();
     } else {

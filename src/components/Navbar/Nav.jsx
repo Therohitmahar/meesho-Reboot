@@ -19,38 +19,18 @@ export const Nav = () => {
   const inputRef = useRef();
 
   function handleSearchBar(e) {
-    let value = e.target.value;
-    if (value.length === 0) {
-      setShowSearch(false);
-    }
-    setSearchInput(value);
-    setShowSearch(true);
-    handleFilter();
-    inputRef.current.onfocus = () => {
-      console.log(inputRef.current.value);
-      setShowSearch(true);
-    };
-
-    inputRef.current.onblur = () => {
-      setTimeout(() => {
-        setShowSearch(false);
-      }, 300);
-    };
+    let input = e.target.value.toLowerCase();
+    let newData = info.filter((item) =>
+      item.title.toLowerCase().startsWith(input)
+    );
+    setFilteredData(newData);
   }
-
-  function handleFilter() {
-    if (info == undefined) {
-      return null;
-    } else {
-      const filteringData = info.filter((item) => {
-        if (item == undefined) return false;
-        else
-          return item.title.toLowerCase().includes(searchInput.toLowerCase());
-      });
-      setFilteredData(filteringData);
-    }
+  function handleSubNavClick() {
+    let productPage = document.getElementById("products-page");
+    productPage.scrollIntoView({
+      behavior: "smooth",
+    });
   }
-
   return (
     <div>
       <div className="nav-container">
@@ -73,9 +53,7 @@ export const Nav = () => {
             ref={inputRef}
             type="text"
             id="nav-search"
-            onChange={(e) => {
-              handleSearchBar(e);
-            }}
+            onChange={handleSearchBar}
             placeholder="Try Saree, Kurta or Search by Product Code "
           />
           {showSearch && (
@@ -116,7 +94,7 @@ export const Nav = () => {
         </Link>
       </div>
       <div className="lower-nav">
-        <ul>
+        <ul onClick={handleSubNavClick}>
           <li>Women Ethnic </li>
           <li>Women Western</li>
           <li>Men</li>

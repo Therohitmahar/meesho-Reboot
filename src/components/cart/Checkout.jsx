@@ -25,10 +25,10 @@ function Checkout() {
   const [confetti, setConfetti] = useState(false);
 
   function letsToast() {
-    toast.success("Order! Placed", {
+    toast.success("Order Placed!", {
       position: "bottom-right",
-      autoClose: 4000,
-      hideProgressBar: true,
+      autoClose: 5000,
+      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
@@ -47,8 +47,8 @@ function Checkout() {
       setConfetti(false);
       dispatch({ type: "clear" });
       navigate("/");
-      letsToast();
-    }, 4000);
+    }, 2000);
+    letsToast();
   };
 
   return (
@@ -124,10 +124,11 @@ function Checkout() {
         </button>
         <img src="https://drive.google.com/u/0/uc?id=1CQprfvDdihKoFw21dYznnS4fSoo-odbM&export=download"></img>
       </div>
+      {confetti && <Confetti />}
       <ToastContainer
         position="bottom-right"
-        autoClose={4000}
-        hideProgressBar
+        autoClose={5000}
+        hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
@@ -136,7 +137,6 @@ function Checkout() {
         pauseOnHover
         theme="colored"
       />
-      {confetti && <Confetti />}
     </div>
   );
 }

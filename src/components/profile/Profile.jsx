@@ -1,96 +1,48 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 export default function Profile() {
-  const UsernameRef = useRef();
-  const passwordRef = useRef();
-  const [isLog, setIsLog] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const localOrder = JSON.parse(localStorage.getItem("order"));
-    console.log(localOrder);
-    const localData = JSON.parse(localStorage.getItem("auth"));
-    if (localData) {
-      if (localData.isLogged) setIsLog(true);
-      else {
-        setIsLog(false);
-      }
-      console.log("in if");
-    } else {
-      const authData = {
-        username: "admin",
-        password: "admin",
-        isLogged: false,
-      };
-
-      localStorage.setItem("auth", JSON.stringify(authData));
-      setIsLog(false);
-    }
-  }, []);
-  function handleSubmit(e) {
-    e.preventDefault();
-    const localData = JSON.parse(localStorage.getItem("auth"));
-    if (
-      UsernameRef.current.value == localData.username &&
-      passwordRef.current.value == localData.password
-    ) {
-      alert("Login Successful");
-      setIsLog(true);
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({ ...localData, isLogged: true })
-      );
-      return;
-    }
-  }
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   return (
     <>
-      {isLog ? (
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ textAlign: "center" }}>Your Order is Empty</h1>
-          <button
-            style={{
-              padding: "13px",
-              backgroundColor: "#F43397",
-              border: "none",
-              borderRadius: "5px",
-              color: "white",
-              fontSize: "16px",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
-            onClick={() => navigate("/cart")}
-          >
-            Go To Cart
-          </button>
-        </div>
-      ) : (
-        <div className="login-container">
+      <div className="login-container">
+        {!isAuthenticated ? (
           <div className="login-form">
             <img src="https://images.meesho.com/images/marketing/1661417516766.webp"></img>
-            <h3>Log in to view your profile</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="info-input">
-                <input
-                  type="text"
-                  ref={UsernameRef}
-                  required
-                  placeholder="Username"
-                ></input>
-                <input
-                  type="password"
-                  ref={passwordRef}
-                  required
-                  placeholder="Password"
-                ></input>
-              </div>
+            <h3>Log in / Sign up</h3>
 
-              <button type="submit">Log In</button>
-            </form>
+            <button className="login" onClick={() => loginWithRedirect()}>
+              Log In
+            </button>
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="isauth">
+            {user.name && <h3>Hello {user.name}</h3>}
+            <button className="logout" onClick={(e) => logout()}>
+              Log Out
+            </button>
+
+            <button
+              style={{
+                padding: "13px",
+                display: "block",
+                backgroundColor: "#F43397",
+                border: "none",
+                borderRadius: "5px",
+                color: "white",
+                fontSize: "16px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              onClick={() => navigate("/cart")}
+            >
+              Go To Cart
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 }
