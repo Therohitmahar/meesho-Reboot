@@ -11,11 +11,28 @@ const Product = () => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [goToCart, setGoToCart] = useState(false);
+  const [discountPercentage, setDiscountPercentage] = useState(getRandom());
+  const [actualPrice, setActualPrice] = useState(0);
+
   const navigate = useNavigate();
   const {
     state: { cart },
     dispatch,
   } = InfoState();
+  function ratingColor(rating) {
+    if (typeof rating === "number") {
+      if (rating <= 3) {
+        return "rating spark yellow";
+      } else {
+        return "rating spark green";
+      }
+    }
+    return "";
+  }
+
+  function getRandom() {
+    return Math.floor(Math.random() * 22);
+  }
 
   useEffect(() => {
     const getProduct = async () => {
@@ -26,7 +43,15 @@ const Product = () => {
     };
 
     getProduct();
+    setDiscountPercentage(getRandom());
   }, []);
+  useEffect(() => {
+    if (product.price) {
+      setActualPrice(
+        product.price + product.price * (discountPercentage * 0.01)
+      );
+    }
+  }, [product.price, discountPercentage]);
   const LoadingCompo = () => {
     return (
       <>
@@ -74,7 +99,17 @@ const Product = () => {
               </button>
             )}
 
-            <button className="btn buybtn">
+            <button
+              className="btn buybtn"
+              onClick={() => {
+                dispatch({
+                  type: "addToCart",
+                  payload: product,
+                });
+                navigate("/");
+                navigate("/cart");
+              }}
+            >
               <KeyboardDoubleArrowRightIcon />
               Buy Now
             </button>
@@ -83,9 +118,17 @@ const Product = () => {
         <div className="right-side">
           <div className="Product-title product-border">
             <h4>{product.title}</h4>
-            <h2>₹{product.price}</h2>
+            <h2>
+              ₹{product.price}{" "}
+              <span className="onwards" style={{ fontSize: "20px" }}>
+                {actualPrice && actualPrice.toFixed()}
+              </span>{" "}
+              <span className="off">{discountPercentage}% off</span>
+            </h2>
             <div>
-              <span className="rating spark star">
+              <span
+                className={ratingColor(product.rating && product.rating.rate)}
+              >
                 {product.rating && product.rating.rate}
                 <StarIcon />
               </span>

@@ -80,3 +80,8 @@ form input:focus {
   border: none;
   border-bottom: 2px solid #f43397;
 }
+.isauth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

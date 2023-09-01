@@ -1,5 +1,4 @@
 import { Star } from "lucide-react";
-import Product from "../product/product";
 import "./card.css";
 import { useNavigate } from "react-router-dom";
 export default function Card({ id, title, price, image, rating }) {
@@ -39,12 +38,7 @@ export default function Card({ id, title, price, image, rating }) {
           <div className="review-container">
             <span className={ratingColor(rating.rate)}>
               {rating.rate}
-              <Star
-                color="#ffffff"
-                size={13}
-                strokeWidth={3}
-                absoluteStrokeWidt
-              />
+              <Star color="#ffffff" size={13} strokeWidth={3} />
             </span>
             <span className="review-count">/{rating.count} Reviews</span>
           </div>

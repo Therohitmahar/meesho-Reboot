@@ -3,19 +3,14 @@ import TotalPrice from "./TotalPrice";
 import { BsShieldFillCheck } from "react-icons/bs";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { InfoState } from "../../context/Context";
+import styles from "../../buttons.module.css";
 
 function COD() {
   return (
-    <div style={{ width: "30%" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className={styles.widthFull}>
+      <div className={styles.flex}>
         <h3> Payment Method</h3>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
+        <div className={styles.flexRow}>
           <BsShieldFillCheck />{" "}
           <span style={{ fontSize: "14px" }}>100% Secure Payment</span>
         </div>
@@ -66,9 +61,7 @@ function Payment() {
   return (
     <>
       {cart.length > 0 ? (
-        <div
-          style={{ display: "flex", justifyContent: "center", margin: "50px" }}
-        >
+        <div className={styles.flex}>
           <COD />
           <TotalPrice
             continueTo={"checkout"}

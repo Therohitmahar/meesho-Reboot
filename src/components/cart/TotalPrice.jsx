@@ -5,8 +5,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import Popup from "reactjs-popup";
 
-function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
+function TotalPrice({
+  timer,
+  continueTo,
+  ContinueTitle,
+  justSaying,
+  setShowModal,
+}) {
   const {
     state: { cart },
   } = InfoState();
@@ -27,14 +34,15 @@ function TotalPrice({ timer, continueTo, ContinueTitle, justSaying }) {
       lateTimer();
       timer();
     } else {
-      alert("Please Login First");
-      navigate("/profile");
+      setShowModal(true);
       return;
     }
   }
 
   useEffect(() => {
-    setTotal(cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0));
+    setTotal(
+      cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0).toFixed(2)
+    );
   }, [cart]);
   return (
     <>

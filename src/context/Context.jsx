@@ -60,7 +60,6 @@ function Context({ children }) {
     return `${date}/${month}/${year}`;
   }
   let deliveryDate = getEstimate();
-  console.log(deliveryDate);
   const fetchInfo = async () => {
     try {
       const response = await fetch(

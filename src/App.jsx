@@ -1,4 +1,3 @@
-import Card from "./components/cardList/card.jsx";
 import CardList from "./components/cardList/cardList.jsx";
 import { Routes, Route } from "react-router-dom";
 import { Nav } from "./components/Navbar/Nav.jsx";
@@ -9,10 +8,12 @@ import Profile from "./components/profile/Profile.jsx";
 import Address from "./components/cart/Address.jsx";
 import Payment from "./components/cart/payment.jsx";
 import Checkout from "./components/cart/Checkout.jsx";
+import "./App.css";
 function App() {
   return (
     <>
       <Nav />
+
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/product" element={<CardList />} exact></Route>

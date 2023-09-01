@@ -23,6 +23,7 @@ export const Nav = () => {
     let newData = info.filter((item) =>
       item.title.toLowerCase().startsWith(input)
     );
+    console.log();
     setFilteredData(newData);
   }
   function handleSubNavClick() {
@@ -54,6 +55,14 @@ export const Nav = () => {
             type="text"
             id="nav-search"
             onChange={handleSearchBar}
+            onFocus={() => {
+              setShowSearch(true);
+            }}
+            onBlur={() =>
+              setTimeout(() => {
+                setShowSearch(false);
+              }, 1000)
+            }
             placeholder="Try Saree, Kurta or Search by Product Code "
           />
           {showSearch && (
@@ -65,6 +74,8 @@ export const Nav = () => {
                       key={item.id}
                       id={item.id}
                       title={item.title.split(" ").slice(0, 6).join(" ")}
+                      setShowSearch={setShowSearch}
+                      setSearchInput={setSearchInput}
                     />
                   );
                 })}

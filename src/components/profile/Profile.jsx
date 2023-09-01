@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./profile.css";
+import styles from "../../buttons.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 export default function Profile() {
@@ -13,14 +14,17 @@ export default function Profile() {
             <img src="https://images.meesho.com/images/marketing/1661417516766.webp"></img>
             <h3>Log in / Sign up</h3>
 
-            <button className="login" onClick={() => loginWithRedirect()}>
+            <button
+              className={styles.loginBtn}
+              onClick={() => loginWithRedirect()}
+            >
               Log In
             </button>
           </div>
         ) : (
           <div className="isauth">
             {user.name && <h3>Hello {user.name}</h3>}
-            <button className="logout" onClick={(e) => logout()}>
+            <button className={styles.loginBtn} onClick={(e) => logout()}>
               Log Out
             </button>
 

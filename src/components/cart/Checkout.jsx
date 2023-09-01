@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { FiTruck } from "react-icons/fi";
 import "./totalPrice.css";
 import "./checkout.css";
-
+import styles from "../../buttons.module.css";
 function Checkout() {
   const {
     state: { cart },
@@ -47,26 +47,15 @@ function Checkout() {
       setConfetti(false);
       dispatch({ type: "clear" });
       navigate("/");
-    }, 2000);
+    }, 3000);
     letsToast();
   };
 
   return (
-    <div style={{ display: "flex", margin: "auto", width: "90vw" }}>
+    <div className={styles.flex}>
       {cart.length > 0 && (
         <div className="left-cart">
-          <div
-            className="ETA"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              border: "1px solid grey",
-              margin: "5px",
-              width: "90%",
-              padding: "5px",
-              backgroundColor: "yellow",
-            }}
-          >
+          <div className="ETA">
             <FiTruck /> Estimated Delivery by {" " + deliveryDate}
           </div>
           {cart.map((item) => {

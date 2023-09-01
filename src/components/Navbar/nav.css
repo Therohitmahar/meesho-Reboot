@@ -159,3 +159,35 @@ div a {
   gap: 4px;
   cursor: pointer;
 }
+@media screen and (max-width: 425px) {
+  .search-container,
+  .download,
+  .suplier,
+  .lower-nav {
+    display: none;
+  }
+  .nav-container {
+    width: 100vw;
+  }
+  .logo {
+    width: 40%;
+  }
+  .logo a img {
+    width: 100%;
+    padding: 0;
+    scale: 1;
+  }
+  .top-cat-title h3 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 0.7rem;
+  }
+  .suplier,
+  .lower-nav {
+    display: none;
+  }
+}

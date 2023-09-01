@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import SingleCart from "./SingleCart";
 import TotalPrice from "./TotalPrice";
 import "./cart.css";
 import { InfoState } from "../../context/Context";
+import Popup from "../Popup/Popup";
+import { useNavigate } from "react-router-dom";
 function Cart() {
   const {
     state: { cart },
   } = InfoState();
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
+      {showModal && (
+        <Popup
+          onClose={() => setShowModal(false)}
+          onGoToLogin={() => {
+            navigate("/profile");
+          }}
+        />
+      )}
       {cart.length > 0 ? (
         <div className="cart-page">
           <div className="left-cart">
@@ -27,6 +39,7 @@ function Cart() {
           </div>
           <div className="right-cart">
             <TotalPrice
+              setShowModal={setShowModal}
               ContinueTitle="Continue"
               continueTo={"address"}
               timer={() => {}}

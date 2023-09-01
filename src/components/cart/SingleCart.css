@@ -60,3 +60,10 @@
 .single-cart-right {
   height: max-;
 }
+@media screen and (max-width: 425px) {
+  .main-cart {
+    padding: 0;
+    width: 90%;
+    margin-inline: auto;
+  }
+}
