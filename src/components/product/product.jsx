@@ -110,10 +110,15 @@ const Product = () => {
             <button
               className="btn buybtn"
               onClick={() => {
-                dispatch({
-                  type: "addToCart",
-                  payload: product,
-                });
+                let isThereInCart = cart.some((item) => item.id == product.id);
+                if (isThereInCart) {
+                  dispatch({ type: "incQty", payload: product });
+                } else {
+                  dispatch({
+                    type: "addToCart",
+                    payload: product,
+                  });
+                }
                 navigate("/");
                 navigate("/cart");
               }}
