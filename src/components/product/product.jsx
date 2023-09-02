@@ -5,6 +5,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import "./product.css";
 import { InfoState } from "../../context/Context";
+import { CheckCircle2 } from "lucide-react";
 
 const Product = () => {
   let { Id } = useParams();
@@ -37,8 +38,11 @@ const Product = () => {
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
-      const response = await fetch(`https://fakestoreapi.com/products/${Id}`);
-      setProduct(await response.json());
+      const response = await fetch(
+        `https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?&id=${Id}`
+      );
+      const converted = await response.json();
+      setProduct(converted[0]);
       setLoading(false);
     };
 
@@ -76,26 +80,30 @@ const Product = () => {
               <button
                 className="btn addToCart"
                 onClick={() => {
-                  dispatch({
-                    type: "addToCart",
-                    payload: product,
-                  });
+                  let isThereInCart = cart.some(
+                    (item) => item.id == product.id
+                  );
+                  if (isThereInCart) {
+                    dispatch({ type: "incQty", payload: product });
+                  } else {
+                    dispatch({
+                      type: "addToCart",
+                      payload: product,
+                    });
+                  }
                   setGoToCart(true);
+                  setTimeout(() => {
+                    setGoToCart(false);
+                  }, 2000);
                 }}
               >
                 <ShoppingCartIcon />
                 Add to Cart
               </button>
             ) : (
-              <button
-                className="btn addToCart"
-                onClick={() => {
-                  navigate("/");
-                  navigate("/cart");
-                }}
-              >
-                <ShoppingCartIcon />
-                Go to Cart
+              <button className="btn addToCart">
+                <CheckCircle2 color="#4ecd4c" />
+                Added
               </button>
             )}
 

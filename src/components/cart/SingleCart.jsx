@@ -14,7 +14,7 @@ function SingleCart({ image, title, price, qty, payload }) {
         </div>
         <div className="single-cart-right">
           <div className="title-button">
-            <h5>{title}</h5>
+            <h5>{title.split(" ").slice(0, 6).join(" ")}</h5>
           </div>
           <div className="small-detail">
             <p>size: Free Size</p>

@@ -8,7 +8,8 @@
 }
 .image-holder {
   aspect-ratio: 1/1;
-  height: 60vh;
+  height: 30vw;
+  width: auto;
   display: flex;
   align-items: center;
 }
@@ -97,6 +98,19 @@
 .star.yellow {
   background-color: #f4b619;
 }
+@media screen and (max-width: 600px) {
+  .product-page {
+    flex-direction: column;
+    padding: 0;
+    margin: 10px;
+    gap: 5px;
+  }
+  .image-holder {
+    width: 100%;
+    height: auto;
+    margin-inline: auto;
+  }
+}
 @media screen and (max-width: 425px) {
   .product-page {
     flex-direction: column;
@@ -111,6 +125,11 @@
     bottom: 0px;
     width: 100%;
     left: 0;
+  }
+  .image-holder {
+    width: 100%;
+    height: auto;
+    margin-inline: auto;
   }
   .right-side {
     margin-bottom: 60px;

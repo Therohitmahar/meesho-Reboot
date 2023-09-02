@@ -172,10 +172,12 @@ div a {
   .logo {
     width: 40%;
   }
+  .logo a {
+    width: 100%;
+  }
   .logo a img {
     width: 100%;
     padding: 0;
-    scale: 1;
   }
   .top-cat-title h3 {
     font-size: 16px;
@@ -186,8 +188,14 @@ div a {
   body {
     font-size: 0.7rem;
   }
+  .logo a {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
   .suplier,
-  .lower-nav {
+  .lower-nav,
+  .search-container {
     display: none;
   }
 }

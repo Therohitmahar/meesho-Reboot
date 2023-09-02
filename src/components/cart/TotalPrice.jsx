@@ -34,7 +34,7 @@ function TotalPrice({
       lateTimer();
       timer();
     } else {
-      setShowModal(true);
+      navigate("/profile");
       return;
     }
   }

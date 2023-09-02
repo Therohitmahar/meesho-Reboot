@@ -46,6 +46,12 @@
   width: 90%;
   margin: auto;
 }
+@media screen and (max-width: 622px) {
+  .price-details {
+    width: 100%;
+    margin-inline: auto;
+  }
+}
 @media screen and (max-width: 425px) {
   .price-details {
     width: 90%;

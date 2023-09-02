@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SingleCart from "./SingleCart";
 import TotalPrice from "./TotalPrice";
 import "./cart.css";
@@ -10,7 +10,9 @@ function Cart() {
     state: { cart },
   } = InfoState();
   const [showModal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
+
   return (
     <>
       {showModal && (
@@ -27,7 +29,7 @@ function Cart() {
             {cart.map((item) => {
               return (
                 <SingleCart
-                  key={Date.now}
+                  key={item.id}
                   qty={item.qty}
                   payload={item}
                   image={item.image}

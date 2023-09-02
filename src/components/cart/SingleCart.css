@@ -1,8 +1,8 @@
 .cart-item {
-  height: 150px;
   display: flex;
   border: 1px solid rgba(128, 128, 128, 0.452);
   margin-bottom: 1px;
+  height: 170px;
 }
 .main-cart {
   margin: 10px;
@@ -58,7 +58,13 @@
   margin: 0;
 }
 .single-cart-right {
-  height: max-;
+  height: max-content;
+}
+@media screen and (max-width: 622px) {
+  .main-cart {
+    width: 100%;
+    margin-inline: auto;
+  }
 }
 @media screen and (max-width: 425px) {
   .main-cart {

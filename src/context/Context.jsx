@@ -22,44 +22,52 @@ function cartReducer(state, action) {
     case "incQty":
       return {
         ...state,
-        cart: state.cart.filter((c) =>
-          c.id === action.payload.id ? (c.qty = action.payload.qty + 1) : c.qty
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item
         ),
       };
     case "decQty":
       return {
         ...state,
-        cart: state.cart.filter((c) =>
-          c.id === action.payload.id ? (c.qty = action.payload.qty - 1) : c.qty
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id ? { ...item, qty: item.qty - 1 } : item
         ),
       };
     case "clear":
       return {
+        ...state,
         cart: [],
+      };
+    case "loadCart":
+      return {
+        ...state,
+        cart: action.payload,
       };
     default:
       return state;
   }
 }
+
 function Context({ children }) {
+  const [state, dispatch] = useReducer(cartReducer, {
+    info: [],
+    cart: [],
+  });
+  useEffect(() => {
+    const savedCartData = JSON.parse(localStorage.getItem("cart"));
+    if (savedCartData) {
+      dispatch({ type: "loadCart", payload: savedCartData });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  }, [state.cart]);
+
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState([]);
   const [page, setPage] = useState(1);
 
-  function getEstimate() {
-    const deliveryDate = new Date();
-    let date = deliveryDate.getDate();
-    let month = deliveryDate.getMonth() + 1;
-    const year = deliveryDate.getFullYear();
-    if (date >= 24) {
-      date = 1;
-      month += 1;
-    } else {
-      date += 5;
-    }
-    return `${date}/${month}/${year}`;
-  }
-  let deliveryDate = getEstimate();
   const fetchInfo = async () => {
     try {
       const response = await fetch(
@@ -77,19 +85,21 @@ function Context({ children }) {
     fetchInfo();
   }, [page]);
 
-  const [state, dispatch] = useReducer(cartReducer, {
-    info: info,
-    cart: [],
-  });
   return (
     <CartContext.Provider
-      value={{ state, dispatch, info, isLoading, page, setPage, deliveryDate }}
+      value={{
+        state,
+        dispatch,
+        info,
+        isLoading,
+        page,
+        setPage,
+      }}
     >
       {children}
     </CartContext.Provider>
   );
 }
-
 export function InfoState() {
   return useContext(CartContext);
 }
