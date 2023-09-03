@@ -64,6 +64,8 @@
   .main-cart {
     width: 100%;
     margin-inline: auto;
+    border: none;
+    padding: 0;
   }
 }
 @media screen and (max-width: 425px) {
@@ -71,5 +73,6 @@
     padding: 0;
     width: 90%;
     margin-inline: auto;
+    border: none;
   }
 }

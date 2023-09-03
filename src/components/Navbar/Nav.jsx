@@ -26,12 +26,6 @@ export const Nav = () => {
     console.log();
     setFilteredData(newData);
   }
-  function handleSubNavClick() {
-    let productPage = document.getElementById("products-page");
-    productPage.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
   return (
     <div>
       <div className="nav-container">
@@ -103,19 +97,6 @@ export const Nav = () => {
             <ShoppingCartIcon /> <p>Cart ({cart.length})</p>
           </div>
         </Link>
-      </div>
-      <div className="lower-nav">
-        <ul onClick={handleSubNavClick}>
-          <li>Women Ethnic </li>
-          <li>Women Western</li>
-          <li>Men</li>
-          <li>Kids</li>
-          <li>Home & Kitchen</li>
-          <li>Beauty & Health</li>
-          <li>Jewellery & Accessories</li>
-          <li>Bag & Footwear</li>
-          <li>Electronics</li>
-        </ul>
       </div>
       <Outlet />
     </div>

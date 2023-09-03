@@ -5,7 +5,7 @@
 }
 .nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background-color: #fefefe;
   height: 72px;
   align-items: center;
@@ -192,6 +192,9 @@ div a {
     margin: 0;
     padding: 0;
     text-align: left;
+  }
+  .nav-container {
+    justify-content: center;
   }
   .suplier,
   .lower-nav,

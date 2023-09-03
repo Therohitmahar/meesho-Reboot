@@ -13,7 +13,6 @@ function App() {
   return (
     <>
       <Nav />
-
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/product" element={<CardList />} exact></Route>

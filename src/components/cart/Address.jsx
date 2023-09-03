@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Address() {
   const navigate = useNavigate();
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("payment");
+  }
   return (
     <div className="address-css">
       <form
@@ -13,7 +17,7 @@ export default function Address() {
 
           flexDirection: "column",
         }}
-        onSubmit={navigate("payment")}
+        onSubmit={handleSubmit}
       >
         <h2>
           <FiPhone /> Contact Details
@@ -35,16 +39,7 @@ export default function Address() {
           />
           <input required placeholder="State" style={{ width: "90%" }} />
         </div>
-        <input required placeholder="Nearby Location (optional)" />
-        <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("payment");
-          }}
-        >
-          Save Address and continue
-        </button>
+        <button type="submit">Save Address and continue</button>
       </form>
     </div>
   );
