@@ -5,9 +5,8 @@
   height: 170px;
 }
 .main-cart {
-  margin: 10px;
-  width: 40vw;
-  border-right: 1px solid rgba(128, 128, 128, 0.452);
+  margin-block: 10px;
+  width: 290px;
   padding-right: 50px;
   box-sizing: content-box;
 }

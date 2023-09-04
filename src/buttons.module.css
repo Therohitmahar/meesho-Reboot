@@ -15,8 +15,80 @@
   display: flex;
   justify-content: center;
 }
-.widthFull {
+.flexEven {
+  display: flex;
+  justify-content: space-evenly;
+}
+.flexSpaceBetween {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.cvvAndExp {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+.cvvAndExp input {
   width: 30%;
+}
+.height0 {
+  height: 0;
+  overflow: hidden;
+}
+.height100 {
+  height: auto;
+}
+.checkoutAddress {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  box-shadow: 2px 1px 5px black;
+}
+.CheckoutPay {
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 2px 1px 5px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.h4 {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 0 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.width100 input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid rgba(65, 65, 65, 0.671);
+  width: 100%;
+  margin: 2px;
+}
+.width100 input::placeholder {
+  font-size: 0.9rem;
+}
+.flexAlignCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.phone {
+  display: flex;
+  align-items: center;
+}
+.width100 {
+  width: 100%;
+  color: aliceblue;
+}
+.widthFull {
+  width: 290px;
 }
 .popup {
   background-color: rgba(128, 128, 128, 0.808);
@@ -30,8 +102,14 @@
 .popup h2 {
   color: white;
 }
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 @media screen and (max-width: 425px) {
-  .flex {
+  .flex,
+  .flexEven {
     flex-direction: column;
   }
   .widthFull {

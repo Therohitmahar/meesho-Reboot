@@ -2,8 +2,17 @@
   display: flex;
   justify-content: center;
   border: 1px solid grey;
-  margin: 5px;
-  width: 90%;
+  margin-block: 5px;
+  width: 290px;
   padding: 5px;
   background-color: rgb(247, 247, 103);
+}
+.creditDiv {
+  transition: 0.5s ease-in-out;
+}
+.height0 {
+  display: none;
+}
+.height100 {
+  display: block;
 }

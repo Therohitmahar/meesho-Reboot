@@ -67,7 +67,45 @@ function Context({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState([]);
   const [page, setPage] = useState(1);
-
+  const [paymentMethod, setPaymentMethod] = useState("Cash On Delivery");
+  const [codSelected, setCodSelected] = useState(true);
+  const [address, setAddress] = useState({
+    name: "",
+    phoneNumber: "",
+    roadName: "",
+    houseName: "",
+    pincode: "",
+    city: "",
+    state: "",
+  });
+  useEffect(() => {
+    let localAddress = JSON.parse(localStorage.getItem("address"));
+    if (localAddress) {
+      setAddress(localAddress);
+    }
+    let localPayment = JSON.parse(localStorage.getItem("paymentMode"));
+    if (localPayment) {
+      setPaymentMethod(JSON.stringify(localPayment));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("address", JSON.stringify(address));
+    localStorage.setItem("paymentMode", JSON.stringify(paymentMethod));
+  }, [address, paymentMethod]);
+  function getEstimate() {
+    const deliveryDate = new Date();
+    let date = deliveryDate.getDate();
+    let month = deliveryDate.getMonth() + 1;
+    const year = deliveryDate.getFullYear();
+    if (date >= 24) {
+      date = 1;
+      month += 1;
+    } else {
+      date += 5;
+    }
+    return `${date}/${month}/${year}`;
+  }
+  let deliveryDate = getEstimate();
   const fetchInfo = async () => {
     try {
       const response = await fetch(
@@ -94,6 +132,13 @@ function Context({ children }) {
         isLoading,
         page,
         setPage,
+        deliveryDate,
+        paymentMethod,
+        setPaymentMethod,
+        codSelected,
+        setCodSelected,
+        address,
+        setAddress,
       }}
     >
       {children}
