@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import Popup from "reactjs-popup";
 
 function TotalPrice({
   timer,
