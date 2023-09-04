@@ -27,6 +27,7 @@ function CreditPayment() {
       setErrorMsg("⛔Enter Valid Card Details");
     }
   }
+  console.log();
   return (
     <div className={styles.width100}>
       <h4 className={styles.h4} onClick={() => setOpenCredit(!openCredit)}>
