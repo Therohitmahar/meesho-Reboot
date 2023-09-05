@@ -15,25 +15,7 @@ export default function Address() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    const newErrorMessages = {
-      name: name.trim() === "" ? "Name is required." : "",
-      phoneNumber:
-        phoneNumber.length !== 10 ? "Please enter a valid Phone Number." : "",
-      houseName: houseName.trim() === "" ? "House Name is required." : "",
-      roadName: roadName.trim() === "" ? "Road Name is required." : "",
-      pincode: pincode.length !== 6 ? "Please enter a valid Pincode." : "",
-      city: city.trim() === "" ? "City is required." : "",
-      state: state.trim() === "" ? "State is required." : "",
-    };
-
-    setErrorMsg(newErrorMessages);
-
-    // Check if there are any error messages
-    if (Object.values(newErrorMessages).every((message) => message === "")) {
-      // All fields are valid, navigate to the next step
-      navigate("payment");
-    }
+    navigate("payment");
   }
 
   return (
