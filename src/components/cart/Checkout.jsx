@@ -16,6 +16,7 @@ function Checkout() {
     dispatch,
     address: { name, phoneNumber, roadName, houseName, pincode, city, state },
     deliveryDate,
+    address,
     paymentMethod,
   } = InfoState();
   const [total, setTotal] = useState();
@@ -26,6 +27,8 @@ function Checkout() {
 
   const [confetti, setConfetti] = useState(false);
 
+  console.log("address :", address);
+  console.log("address phone:", phoneNumber);
   function letsToast() {
     toast.success("Order Placed!", {
       position: "bottom-right",
@@ -56,7 +59,7 @@ function Checkout() {
   return (
     <div style={{ marginTop: "72px" }} className={styles.flexEven}>
       {cart.length > 0 && (
-        <div className={styles.widthFull}>
+        <div className={styles.checkoutDetail}>
           <div className="ETA">
             <FiTruck /> Estimated Delivery by {" " + deliveryDate}
           </div>

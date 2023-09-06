@@ -45,6 +45,7 @@ function Cart() {
               ContinueTitle="Continue"
               continueTo={"address"}
               timer={() => {}}
+              checkPayment={false}
             />
           </div>
         </div>

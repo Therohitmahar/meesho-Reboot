@@ -71,6 +71,8 @@ function Context({ children }) {
   const [page, setPage] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState("Cash On Delivery");
   const [codSelected, setCodSelected] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
   const [address, setAddress] = useState({
     name: "",
     phoneNumber: "",
@@ -149,6 +151,8 @@ function Context({ children }) {
         codSelected,
         setCodSelected,
         address,
+        errorMsg,
+        setErrorMsg,
         setAddress,
         allProducts,
       }}

@@ -11,11 +11,14 @@ function TotalPrice({
   continueTo,
   ContinueTitle,
   justSaying,
-  setShowModal,
+  checkPayment,
 }) {
   const {
     state: { cart },
+    paymentMethod,
+    setErrorMsg,
   } = InfoState();
+
   const { isAuthenticated } = useAuth0();
   const [total, setTotal] = useState();
   const [continues, setContinues] = useState(false);
@@ -27,14 +30,19 @@ function TotalPrice({
       setContinues(false);
     }, 2000);
   }
-
+  console.log("checkPayment:", checkPayment);
+  console.log(paymentMethod);
   function checkAuth() {
-    if (isAuthenticated) {
-      lateTimer();
-      timer();
+    if (checkPayment === true && paymentMethod == "Not Selected") {
+      setErrorMsg("⛔Select Payment Method");
     } else {
-      navigate("/profile");
-      return;
+      if (isAuthenticated) {
+        lateTimer();
+        timer();
+      } else {
+        navigate("/profile");
+        return;
+      }
     }
   }
 

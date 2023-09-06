@@ -25,6 +25,17 @@
   justify-content: space-between;
   padding: 20px;
 }
+.cashH4 {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 0 2px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 290px;
+}
+.errorMrg {
+  background-color: red;
+}
 .cvvAndExp {
   display: flex;
   width: 80%;
@@ -54,6 +65,8 @@
   justify-content: space-evenly;
   box-shadow: 2px 1px 5px black;
   margin-top: 5px;
+  min-width: 290px;
+  max-width: 407px;
   margin-bottom: 5px;
 }
 .h4 {
@@ -88,16 +101,13 @@
   color: aliceblue;
 }
 .widthFull {
-  width: 290px;
+  min-width: 290px;
 }
-.popup {
-  background-color: rgba(128, 128, 128, 0.808);
-  position: fixed;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  border-radius: 5px;
-  transform: translate(-50%, -50%);
+.Eta {
+  width: 100%;
+}
+.checkoutDetail {
+  max-width: 407px;
 }
 .popup h2 {
   color: white;

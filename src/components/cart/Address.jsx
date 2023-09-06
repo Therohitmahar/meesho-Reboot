@@ -5,14 +5,15 @@ import { InfoState } from "../../context/Context";
 import "./address.css";
 import styles from "../../buttons.module.css";
 
-export default function Address() {
+export default function AddressPage() {
   const navigate = useNavigate();
   const {
     address: { name, phoneNumber, roadName, houseName, pincode, city, state },
+    address,
     setAddress,
   } = InfoState();
   const [errorMsg, setErrorMsg] = useState("");
-
+  console.log(address);
   function handleSubmit(e) {
     e.preventDefault();
     navigate("payment");
