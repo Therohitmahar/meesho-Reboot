@@ -131,7 +131,7 @@ function Payment() {
     state: { cart },
   } = InfoState();
   return (
-    <>
+    <div className={styles.marginTop}>
       {cart.length > 0 ? (
         <div className={styles.flexEven}>
           <COD />
@@ -147,7 +147,7 @@ function Payment() {
           <h1>Nothing In Cart</h1>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

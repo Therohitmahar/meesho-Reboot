@@ -54,7 +54,7 @@ function Checkout() {
   };
 
   return (
-    <div className={styles.flexEven}>
+    <div style={{ marginTop: "72px" }} className={styles.flexEven}>
       {cart.length > 0 && (
         <div className={styles.widthFull}>
           <div className="ETA">

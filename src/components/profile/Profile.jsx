@@ -10,7 +10,7 @@ export default function Profile() {
   console.log(user);
   return (
     <>
-      <div className="login-container">
+      <div className={"login-container"}>
         {!isAuthenticated ? (
           <div className="login-form">
             <img src="https://images.meesho.com/images/marketing/1661417516766.webp"></img>

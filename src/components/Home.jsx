@@ -2,30 +2,37 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "./profile/hero-section/Hero-section";
 import CardList from "./cardList/cardList";
+import { InfoState } from "../context/Context";
 export const Home = () => {
-  function handleSubNavClick() {
-    let productPage = document.getElementById("products-page");
-    productPage.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
+  const navigate = useNavigate();
+  const {
+    state: { product },
+    isLoading,
+    info,
+    page,
+    setPage,
+  } = InfoState();
+
   return (
     <div>
       <div className="lower-nav">
-        <ul onClick={handleSubNavClick}>
-          <li>Women Ethnic </li>
-          <li>Women Western</li>
-          <li>Men</li>
-          <li>Kids</li>
-          <li>Home & Kitchen</li>
-          <li>Beauty & Health</li>
-          <li>Jewellery & Accessories</li>
-          <li>Bag & Footwear</li>
-          <li>Electronics</li>
+        <ul>
+          <li onClick={(e) => navigate("womens_clothing")}>
+            Women's Clothing{" "}
+          </li>
+          <li onClick={(e) => navigate("mens_clothing")}>Men's Clothing </li>
+          <li onClick={(e) => navigate("jewellery")}>
+            Jewellery & Accessories
+          </li>
+          <li onClick={(e) => navigate("electronics")}>Electronics</li>
         </ul>
       </div>
       <HeroSection />
-      <CardList />
+      <CardList
+        pagination={true}
+        route={false}
+        {...{ product, isLoading, info, page, setPage }}
+      />
     </div>
   );
 };

@@ -66,6 +66,8 @@ function Context({ children }) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+
   const [page, setPage] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState("Cash On Delivery");
   const [codSelected, setCodSelected] = useState(true);
@@ -119,8 +121,17 @@ function Context({ children }) {
       setIsLoading(false);
     }
   };
+  async function fetchAllProduct() {
+    const jsonData = await fetch(
+      "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products"
+    );
+    const converted = await jsonData.json();
+    setAllProducts(converted);
+  }
+
   useEffect(() => {
     fetchInfo();
+    fetchAllProduct();
   }, [page]);
 
   return (
@@ -139,6 +150,7 @@ function Context({ children }) {
         setCodSelected,
         address,
         setAddress,
+        allProducts,
       }}
     >
       {children}

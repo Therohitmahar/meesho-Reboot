@@ -3,7 +3,7 @@ import SingleCart from "./SingleCart";
 import TotalPrice from "./TotalPrice";
 import "./cart.css";
 import { InfoState } from "../../context/Context";
-import Popup from "../Popup/Popup";
+import styles from "../../buttons.module.css";
 import { useNavigate } from "react-router-dom";
 function Cart() {
   const {
@@ -14,7 +14,7 @@ function Cart() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className={styles.marginTop}>
       {showModal && (
         <Popup
           onClose={() => setShowModal(false)}
@@ -53,7 +53,7 @@ function Cart() {
           <h1>Nothing In Cart</h1>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

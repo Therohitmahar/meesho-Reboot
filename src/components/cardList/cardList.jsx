@@ -2,17 +2,8 @@ import React from "react";
 import Card from "./card";
 import "./cardList.css";
 import { BsArrowRightSquare, BsArrowLeftSquare } from "react-icons/bs";
-import { InfoState } from "../../context/Context";
 
-const CardList = () => {
-  const {
-    state: { product },
-    isLoading,
-    info,
-    page,
-    setPage,
-  } = InfoState();
-
+const CardList = ({ pagination, isLoading, info, page, setPage, route }) => {
   function handleNext() {
     setPage(2);
   }
@@ -35,21 +26,25 @@ const CardList = () => {
                 price={item.price}
                 image={item.image}
                 rating={item.rating}
+                route={route}
               />
             ))}
             <br />
           </>
         )}
       </div>
-      <div className="pagination">
-        <button onClick={handlePrev}>
-          <BsArrowLeftSquare /> Previous
-        </button>
-        <p>{page}</p>
-        <button onClick={handleNext}>
-          Next <BsArrowRightSquare />
-        </button>
-      </div>
+
+      {pagination && (
+        <div className="pagination">
+          <button onClick={handlePrev}>
+            <BsArrowLeftSquare /> Previous
+          </button>
+          <p>{page}</p>
+          <button onClick={handleNext}>
+            Next <BsArrowRightSquare />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

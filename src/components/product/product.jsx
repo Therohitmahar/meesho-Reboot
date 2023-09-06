@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import StarIcon from "@mui/icons-material/Star";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import "./product.css";
 import { InfoState } from "../../context/Context";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChevronsRight, ShoppingCart, Star } from "lucide-react";
 
 const Product = () => {
   let { Id } = useParams();
@@ -30,6 +27,7 @@ const Product = () => {
     }
     return "";
   }
+  const colorClass = ratingColor(product.rating && product.rating.rate);
 
   function getRandom() {
     return Math.floor(Math.random() * 22);
@@ -97,7 +95,7 @@ const Product = () => {
                   }, 2000);
                 }}
               >
-                <ShoppingCartIcon />
+                <ShoppingCart color="#f43397" />
                 Add to Cart
               </button>
             ) : (
@@ -123,7 +121,7 @@ const Product = () => {
                 navigate("/cart");
               }}
             >
-              <KeyboardDoubleArrowRightIcon />
+              <ChevronsRight color="#ffffff" />
               Buy Now
             </button>
           </div>
@@ -139,11 +137,9 @@ const Product = () => {
               <span className="off">{discountPercentage}% off</span>
             </h2>
             <div>
-              <span
-                className={ratingColor(product.rating && product.rating.rate)}
-              >
+              <span className={`${colorClass}`}>
                 {product.rating && product.rating.rate}
-                <StarIcon />
+                <Star color="#ffffff" />
               </span>
 
               <span>/ {product.rating && product.rating.count}Reviews</span>

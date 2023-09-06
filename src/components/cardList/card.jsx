@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import "./card.css";
 import { useNavigate } from "react-router-dom";
-export default function Card({ id, title, price, image, rating }) {
+export default function Card({ id, title, price, image, rating, route }) {
   const navigate = useNavigate();
   function ratingColor(rating) {
     if (rating <= 3) {
@@ -21,7 +21,9 @@ export default function Card({ id, title, price, image, rating }) {
       <div
         className="card-container"
         onClick={() => {
-          navigate(`product/${id}`);
+          if (route == true) {
+            navigate(`/product/${id}`);
+          } else navigate(`/product/${id}`);
         }}
       >
         <div className="card-image">

@@ -9,6 +9,10 @@ import Address from "./components/cart/Address.jsx";
 import Payment from "./components/cart/payment.jsx";
 import Checkout from "./components/cart/Checkout.jsx";
 import "./App.css";
+import Jewellery from "./pages/jewellery.jsx";
+import Electronics from "./pages/electronics.jsx";
+import MensClothing from "./pages/mensClothing.jsx";
+import WomensClothing from "./pages/womensClothing.jsx";
 function App() {
   return (
     <>
@@ -16,6 +20,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/product" element={<CardList />} exact></Route>
+        <Route path="/jewellery" element={<Jewellery />} exact></Route>
+        <Route path="/electronics" element={<Electronics />} exact></Route>
+        <Route path="/mens_clothing" element={<MensClothing />} exact></Route>
+        <Route
+          path="/womens_clothing"
+          element={<WomensClothing />}
+          exact
+        ></Route>
         <Route path="/product/:Id" element={<Product />} />
         <Route path="cart" element={<Cart />}></Route>
         <Route path="cart/address" element={<Address />} />
