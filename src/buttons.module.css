@@ -19,6 +19,13 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.flexEvenCheckOut {
+  display: flex;
+  justify-content: space-evenly;
+  margin-inline: auto;
+  width: 100%;
+}
 .flexSpaceBetween {
   width: 100%;
   display: flex;
@@ -30,6 +37,8 @@
   padding: 10px;
   box-shadow: 0 2px;
   display: flex;
+  width: 100%;
+  /* margin: 15px; */
   justify-content: space-between;
   min-width: 290px;
 }
@@ -120,10 +129,16 @@
 .marginTop {
   margin-top: 72px;
 }
-
+.mainCartPage {
+  margin-top: 72px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
 @media screen and (max-width: 425px) {
   .flex,
-  .flexEven {
+  .flexEven,
+  .flexEvenCheckOut {
     flex-direction: column;
   }
   .widthFull {

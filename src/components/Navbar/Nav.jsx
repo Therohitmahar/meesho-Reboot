@@ -65,7 +65,7 @@ export const Nav = () => {
                   setShowSearch(false);
                 }, 1000)
               }
-              placeholder="Try Saree, Kurta or Search by Product Code "
+              placeholder="Try Mens Clothing  Or Search by Product Code "
             />
             {showSearch && (
               <div className="searched-item">

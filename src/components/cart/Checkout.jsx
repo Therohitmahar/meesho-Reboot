@@ -57,7 +57,7 @@ function Checkout() {
   };
 
   return (
-    <div style={{ marginTop: "72px" }} className={styles.flexEven}>
+    <div style={{ marginTop: "72px" }} className={styles.flexEvenCheckOut}>
       {cart.length > 0 && (
         <div className={styles.checkoutDetail}>
           <div className="ETA">
@@ -117,20 +117,20 @@ function Checkout() {
           Place Order
         </button>
         <img src="https://drive.google.com/u/0/uc?id=1CQprfvDdihKoFw21dYznnS4fSoo-odbM&export=download"></img>
+        {confetti && <Confetti />}
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
-      {confetti && <Confetti />}
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </div>
   );
 }

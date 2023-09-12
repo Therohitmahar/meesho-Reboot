@@ -9,20 +9,11 @@ function Cart() {
   const {
     state: { cart },
   } = InfoState();
-  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
 
   return (
-    <div className={styles.marginTop}>
-      {showModal && (
-        <Popup
-          onClose={() => setShowModal(false)}
-          onGoToLogin={() => {
-            navigate("/profile");
-          }}
-        />
-      )}
+    <div className={styles.mainCartPage }>
       {cart.length > 0 ? (
         <div className="cart-page">
           <div className="left-cart">
@@ -41,7 +32,6 @@ function Cart() {
           </div>
           <div className="right-cart">
             <TotalPrice
-              setShowModal={setShowModal}
               ContinueTitle="Continue"
               continueTo={"address"}
               timer={() => {}}

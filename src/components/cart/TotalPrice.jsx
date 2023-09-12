@@ -30,8 +30,7 @@ function TotalPrice({
       setContinues(false);
     }, 2000);
   }
-  console.log("checkPayment:", checkPayment);
-  console.log(paymentMethod);
+
   function checkAuth() {
     if (checkPayment === true && paymentMethod == "Not Selected") {
       setErrorMsg("⛔Select Payment Method");

@@ -174,8 +174,7 @@ div a {
   cursor: pointer;
 }
 @media screen and (max-width: 425px) {
-  .search-container,
-  .download,
+  zz .download,
   .suplier,
   .lower-nav {
     display: none;

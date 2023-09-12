@@ -29,3 +29,21 @@ h1 {
   color: red;
   text-align: center;
 }
+.scrollUpBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  background-color: white;
+  outline: none;
+  border: 1px solid #f43397;
+  border-radius: 25px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px;
+}
+@media screen and (max-width: 425px) {
+  .scrollUpBtn {
+    padding: 5px;
+  }
+}
